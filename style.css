@@ -4,7 +4,7 @@
   --bg-bottom: #06090c;
   --slate-1: #152028;
   --slate-2: #22303a;
-  --gold: #d9b160;
+  --gold: #d9b160;`r`n  --signal-red: #ff5a5f;`r`n  --signal-blue: #6ac6ff;
   --gold-bright: #f2d184;
   --gold-deep: #866123;
   --ink: #f2f1ea;
@@ -303,7 +303,7 @@ h2 {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(242, 241, 234, 0.84);
+  color: rgba(242, 241, 234, 0.84);`r`n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .hero-metrics {
@@ -483,7 +483,7 @@ h2 {
   font-weight: 700;
   color: #11161b;
   background: linear-gradient(180deg, var(--gold-bright), var(--gold));
-  box-shadow: 0 12px 24px rgba(217, 177, 96, 0.24);
+  box-shadow: 0 12px 24px rgba(217, 177, 96, 0.24), 0 0 24px rgba(255, 90, 95, 0.12);
 }
 
 .badge-top {
@@ -723,3 +723,4 @@ h2 {
     transition-duration: 0.01ms !important;
   }
 }
+
