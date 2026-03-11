@@ -36,30 +36,38 @@ if (rain) {
 }
 
 if (moneyFeed) {
-  const stackImages = [
-    "https://images.pexels.com/photos/14655997/pexels-photo-14655997.jpeg?auto=compress&cs=tinysrgb&w=900",
-    "https://images.pexels.com/photos/6266770/pexels-photo-6266770.jpeg?auto=compress&cs=tinysrgb&w=900",
-    "https://images.pexels.com/photos/13112009/pexels-photo-13112009.jpeg?auto=compress&cs=tinysrgb&w=900",
-    "https://images.pexels.com/photos/6694859/pexels-photo-6694859.jpeg?auto=compress&cs=tinysrgb&w=900"
+  const reservePresets = [
+    {
+      image: "https://images.pexels.com/photos/5831522/pexels-photo-5831522.jpeg?auto=compress&cs=tinysrgb&w=900",
+      alt: "Trader monitoring stock charts on multiple screens",
+      label: "Bloomberg Goblin",
+      title: "Gamma Squeeze Command Center",
+      description: "Three glowing monitors, zero humility, and the firm belief that every candle is a personal prophecy."
+    },
+    {
+      image: "https://images.pexels.com/photos/6266770/pexels-photo-6266770.jpeg?auto=compress&cs=tinysrgb&w=900",
+      alt: "Open briefcase filled with bundled cash",
+      label: "Travel Desk",
+      title: "Briefcase Event Horizon",
+      description: "Portable abundance package prepared for a highly unnecessary but visually effective capital arrival."
+    },
+    {
+      image: "https://images.pexels.com/photos/13112009/pexels-photo-13112009.jpeg?auto=compress&cs=tinysrgb&w=900",
+      alt: "Man posing with stacks of cash in front of a wall of money",
+      label: "Founder Portrait",
+      title: "Chairman of Visible Liquidity",
+      description: "A commemorative wall of cash assembled for morale, optics, and total desk intimidation."
+    },
+    {
+      image: "https://images.pexels.com/photos/14655997/pexels-photo-14655997.jpeg?auto=compress&cs=tinysrgb&w=900",
+      alt: "Massive pile of stacked bundles of money",
+      label: "Reserve Complex",
+      title: "Tier-One Stack Avalanche",
+      description: "Additional bundles surfaced from the lower vault after the committee requested a less subtle reserve display."
+    }
   ];
 
-  const stackTitles = [
-    "Tier-One Reserve Cascade",
-    "Briefcase Event Horizon",
-    "Founder Liquidity Portrait",
-    "Desk-Side Stack Expansion",
-    "Cross-Desk Cash Formation",
-    "Prime Stack Overflow"
-  ];
-
-  const stackDescriptions = [
-    "Additional bundles surfaced from the lower vault after the committee requested a more convincing show of force.",
-    "Portable abundance package prepared for a highly unnecessary but visually effective capital arrival.",
-    "A commemorative wall of liquidity assembled for morale, optics, and total desk intimidation.",
-    "High-conviction cash formation observed adjacent to screens, forecasts, and expensive posture."
-  ];
-
-  let stackBatch = 0;
+  let batchNumber = 0;
   let totalCards = 0;
   let isAppending = false;
 
@@ -68,20 +76,18 @@ if (moneyFeed) {
 
     for (let index = 0; index < count; index += 1) {
       const itemNumber = totalCards + index + 1;
-      const image = stackImages[(stackBatch + index) % stackImages.length];
-      const title = stackTitles[(stackBatch + index) % stackTitles.length];
-      const description = stackDescriptions[(stackBatch + index) % stackDescriptions.length];
+      const preset = reservePresets[(batchNumber + index) % reservePresets.length];
 
       const card = document.createElement("article");
       card.className = "money-card";
       card.innerHTML = `
         <div class="money-card-media">
-          <img src="${image}" alt="Over-the-top stack of money asset ${itemNumber}">
+          <img src="${preset.image}" alt="${preset.alt}">
         </div>
         <div class="money-card-body">
-          <span>Reserve ${itemNumber}</span>
-          <strong>${title}</strong>
-          <p>${description}</p>
+          <span>${preset.label} ${itemNumber}</span>
+          <strong>${preset.title}</strong>
+          <p>${preset.description}</p>
         </div>
       `;
 
@@ -89,7 +95,7 @@ if (moneyFeed) {
     }
 
     moneyFeed.appendChild(fragment);
-    stackBatch += 1;
+    batchNumber += 1;
     totalCards += count;
 
     if (moneyFeedStatus) {
