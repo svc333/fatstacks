@@ -1,13 +1,16 @@
 :root {
-  --bg-top: #173322;
-  --bg-bottom: #05110b;
-  --green-1: #9eff8e;
-  --green-2: #39d36a;
-  --green-3: #12472b;
-  --gold: #f8d05f;
-  --gold-deep: #cb9214;
-  --ink: #edffe7;
-  --shadow: rgba(0, 0, 0, 0.32);
+  --bg-top: #10171d;
+  --bg-mid: #0e1419;
+  --bg-bottom: #06090c;
+  --slate-1: #152028;
+  --slate-2: #22303a;
+  --gold: #d9b160;
+  --gold-bright: #f2d184;
+  --gold-deep: #866123;
+  --ink: #f2f1ea;
+  --muted: rgba(242, 241, 234, 0.74);
+  --line: rgba(242, 209, 132, 0.18);
+  --shadow: rgba(0, 0, 0, 0.42);
 }
 
 * {
@@ -25,38 +28,42 @@ body {
   font-family: "Space Grotesk", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at 15% 0%, rgba(158, 255, 142, 0.2), transparent 24%),
-    radial-gradient(circle at 85% 8%, rgba(248, 208, 95, 0.14), transparent 18%),
-    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+    radial-gradient(circle at 20% 0%, rgba(217, 177, 96, 0.16), transparent 22%),
+    radial-gradient(circle at 90% 12%, rgba(255, 255, 255, 0.06), transparent 16%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-mid) 55%, var(--bg-bottom));
 }
 
 body::before,
 body::after {
   content: "";
   position: fixed;
-  width: 40vw;
-  height: 40vw;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(57, 211, 106, 0.12), transparent 70%);
-  filter: blur(18px);
   pointer-events: none;
   z-index: 0;
 }
 
 body::before {
-  top: -12vw;
-  left: -12vw;
+  top: -15vw;
+  left: -8vw;
+  width: 34vw;
+  height: 34vw;
+  background: radial-gradient(circle, rgba(217, 177, 96, 0.12), transparent 68%);
+  filter: blur(16px);
 }
 
 body::after {
-  right: -16vw;
-  bottom: -14vw;
+  right: -10vw;
+  bottom: -15vw;
+  width: 42vw;
+  height: 42vw;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.05), transparent 68%);
+  filter: blur(22px);
 }
 
 .page-shell {
   position: relative;
   z-index: 1;
-  width: min(1240px, calc(100% - 2rem));
+  width: min(1260px, calc(100% - 2rem));
   margin: 0 auto;
   padding: 1.5rem 0 4rem;
 }
@@ -75,14 +82,14 @@ body::after {
   width: 108px;
   aspect-ratio: 1.95 / 1;
   border-radius: 12px;
-  border: 2px solid rgba(20, 68, 42, 0.55);
+  border: 1px solid rgba(80, 95, 65, 0.55);
   background:
-    linear-gradient(90deg, rgba(18, 71, 43, 0.28) 0 12%, transparent 12% 88%, rgba(18, 71, 43, 0.2) 88% 100%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.34), transparent 56%),
-    linear-gradient(180deg, #dcffcd, #9fe191);
-  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
-  opacity: 0.88;
+    linear-gradient(90deg, rgba(52, 64, 45, 0.28) 0 12%, transparent 12% 88%, rgba(52, 64, 45, 0.2) 88% 100%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.18), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.28), transparent 56%),
+    linear-gradient(180deg, #d6e0c7, #97a985);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.26);
+  opacity: 0.84;
   --scale: 1;
   animation: money-drop linear infinite;
 }
@@ -91,7 +98,7 @@ body::after {
 .bill::after,
 .bill .bill-center {
   position: absolute;
-  color: rgba(18, 71, 43, 0.78);
+  color: rgba(52, 64, 45, 0.78);
 }
 
 .bill::before,
@@ -114,7 +121,7 @@ body::after {
 
 .bill .bill-center {
   inset: 18% 28%;
-  border: 2px solid rgba(18, 71, 43, 0.28);
+  border: 2px solid rgba(52, 64, 45, 0.28);
   border-radius: 50%;
 }
 
@@ -127,34 +134,52 @@ body::after {
 }
 
 .bill .bill-center::before {
-  background: radial-gradient(circle, rgba(18, 71, 43, 0.16), transparent 60%);
+  background: radial-gradient(circle, rgba(52, 64, 45, 0.16), transparent 60%);
 }
 
 .bill .bill-center::after {
   inset: 32% 30%;
   border-radius: 999px;
-  background: rgba(18, 71, 43, 0.18);
+  background: rgba(52, 64, 45, 0.18);
 }
 
 .hero-card,
 .info-panel,
 .bottom-banner,
 .credits-panel {
+  position: relative;
   backdrop-filter: blur(16px);
-  background: rgba(5, 17, 11, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 80px var(--shadow);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    rgba(8, 12, 16, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 22px 90px var(--shadow);
+}
+
+.hero-card::after,
+.info-panel::after,
+.bottom-banner::after,
+.credits-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(242, 209, 132, 0.42), transparent 30%, transparent 70%, rgba(242, 209, 132, 0.18));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 .hero-card {
-  position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.14fr);
-  gap: 1.5rem;
+  grid-template-columns: minmax(0, 0.84fr) minmax(430px, 1.16fr);
+  gap: 1.75rem;
   padding: 3rem;
-  border-radius: 34px;
-  min-height: 88vh;
+  border-radius: 36px;
+  min-height: 90vh;
 }
 
 .hero-card::before {
@@ -162,8 +187,8 @@ body::after {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(125deg, rgba(248, 208, 95, 0.12), transparent 30%),
-    linear-gradient(180deg, transparent 45%, rgba(57, 211, 106, 0.08));
+    radial-gradient(circle at 75% 18%, rgba(217, 177, 96, 0.12), transparent 18%),
+    linear-gradient(180deg, transparent 45%, rgba(255, 255, 255, 0.03));
   pointer-events: none;
 }
 
@@ -178,8 +203,17 @@ body::after {
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.24em;
+  font-size: 0.74rem;
+  color: rgba(242, 209, 132, 0.84);
+}
+
+.hero-kicker {
+  margin: 1rem 0 0;
+  max-width: 34rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   font-size: 0.78rem;
-  color: #b7f6ad;
 }
 
 h1,
@@ -193,13 +227,13 @@ h2 {
 h1 {
   margin-top: 1rem;
   max-width: 9ch;
-  font-size: clamp(3.8rem, 7vw, 7rem);
-  line-height: 0.92;
+  font-size: clamp(4rem, 7vw, 7.2rem);
+  line-height: 0.91;
   text-wrap: balance;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 4vw, 3.45rem);
   line-height: 1;
 }
 
@@ -208,9 +242,9 @@ h2 {
 .info-panel li,
 .bottom-banner p,
 .credits-panel p {
-  color: rgba(237, 255, 231, 0.88);
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  line-height: 1.65;
+  color: rgba(242, 241, 234, 0.88);
+  font-size: clamp(1rem, 2vw, 1.08rem);
+  line-height: 1.7;
 }
 
 .hero-copy {
@@ -230,11 +264,11 @@ h2 {
   align-items: center;
   justify-content: center;
   min-height: 3.25rem;
-  padding: 0.85rem 1.35rem;
+  padding: 0.9rem 1.4rem;
   border-radius: 999px;
   font-weight: 700;
   text-decoration: none;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
 }
 
 .button:hover,
@@ -243,15 +277,15 @@ h2 {
 }
 
 .button-primary {
-  color: #092110;
-  background: linear-gradient(180deg, #f7e188, var(--gold));
-  box-shadow: 0 10px 25px rgba(248, 208, 95, 0.3);
+  color: #11161b;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  box-shadow: 0 12px 26px rgba(217, 177, 96, 0.28);
 }
 
 .button-secondary {
   color: var(--ink);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
 }
 
 .ticker-strip {
@@ -262,13 +296,14 @@ h2 {
 }
 
 .ticker-strip span {
-  padding: 0.65rem 0.95rem;
+  padding: 0.7rem 1rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.88rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
+  color: rgba(242, 241, 234, 0.84);
 }
 
 .hero-metrics {
@@ -281,49 +316,62 @@ h2 {
 .hero-metrics article {
   padding: 1rem;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(217, 177, 96, 0.09), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
 }
 
 .hero-metrics strong {
   display: block;
   font-family: "Abril Fatface", serif;
   font-weight: 400;
-  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
   line-height: 1;
 }
 
 .hero-metrics span {
   display: block;
   margin-top: 0.45rem;
-  color: rgba(237, 255, 231, 0.74);
+  color: rgba(242, 241, 234, 0.7);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
 }
 
 .hero-scene {
   position: relative;
-  min-height: 760px;
+  min-height: 780px;
 }
 
 .scene-backdrop {
   position: absolute;
   inset: 4% 3% 0 8%;
-  border-radius: 32px;
+  border-radius: 34px;
   background:
-    radial-gradient(circle at 30% 20%, rgba(248, 208, 95, 0.22), transparent 24%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(8, 18, 12, 0.18));
-  border: 1px solid rgba(255, 255, 255, 0.08);
+    radial-gradient(circle at 30% 20%, rgba(217, 177, 96, 0.18), transparent 22%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(8, 18, 12, 0.14));
+  border: 1px solid var(--line);
+}
+
+.scene-gridlines {
+  position: absolute;
+  inset: 4% 3% 0 8%;
+  border-radius: 34px;
+  background-image:
+    linear-gradient(rgba(242, 209, 132, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 209, 132, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.4), transparent 92%);
 }
 
 .photo-card {
   position: absolute;
   overflow: hidden;
   border-radius: 28px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.32);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(242, 209, 132, 0.22);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.36);
 }
 
 .photo-card img {
@@ -331,13 +379,14 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: saturate(0.94) contrast(1.04);
 }
 
 .photo-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 30%, rgba(0, 0, 0, 0.24));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 32%, rgba(0, 0, 0, 0.34));
   pointer-events: none;
 }
 
@@ -349,16 +398,17 @@ h2 {
   z-index: 1;
   padding: 0.9rem 1rem;
   border-radius: 18px;
-  background: rgba(0, 0, 0, 0.38);
+  background: rgba(5, 8, 10, 0.58);
   backdrop-filter: blur(12px);
+  border: 1px solid rgba(242, 209, 132, 0.16);
 }
 
 .photo-caption span {
   display: block;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 0.72rem;
-  color: rgba(237, 255, 231, 0.75);
+  font-size: 0.7rem;
+  color: rgba(242, 241, 234, 0.72);
 }
 
 .photo-caption strong {
@@ -418,28 +468,59 @@ h2 {
   transform: rotate(3deg);
 }
 
-.scene-badge {
+.scene-badge,
+.scene-plaque {
   position: absolute;
   z-index: 2;
-  padding: 0.7rem 1rem;
+}
+
+.scene-badge {
+  padding: 0.72rem 1rem;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 700;
-  color: #0a2314;
-  background: linear-gradient(180deg, #f7e188, var(--gold));
-  box-shadow: 0 12px 24px rgba(248, 208, 95, 0.24);
+  color: #11161b;
+  background: linear-gradient(180deg, var(--gold-bright), var(--gold));
+  box-shadow: 0 12px 24px rgba(217, 177, 96, 0.24);
 }
 
 .badge-top {
   top: 14%;
-  left: 37%;
+  left: 33%;
 }
 
 .badge-bottom {
-  right: 18%;
-  bottom: 1%;
+  right: 12%;
+  bottom: 2%;
+}
+
+.scene-plaque {
+  left: 8%;
+  bottom: 0;
+  padding: 1rem 1.15rem;
+  border-radius: 20px;
+  background: rgba(8, 12, 16, 0.8);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.28);
+}
+
+.scene-plaque span,
+.scene-plaque strong {
+  display: block;
+}
+
+.scene-plaque span {
+  color: rgba(242, 241, 234, 0.68);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+}
+
+.scene-plaque strong {
+  margin-top: 0.35rem;
+  font-size: 1rem;
 }
 
 .info-grid {
@@ -452,7 +533,7 @@ h2 {
 .info-panel,
 .bottom-banner,
 .credits-panel {
-  border-radius: 28px;
+  border-radius: 30px;
   padding: 2rem;
 }
 
@@ -462,8 +543,8 @@ h2 {
 
 .accent-panel {
   background:
-    linear-gradient(180deg, rgba(57, 211, 106, 0.12), rgba(5, 17, 11, 0.62)),
-    rgba(5, 17, 11, 0.56);
+    linear-gradient(180deg, rgba(217, 177, 96, 0.08), rgba(255, 255, 255, 0.02)),
+    rgba(8, 12, 16, 0.82);
 }
 
 .accent-panel ul {
@@ -503,15 +584,15 @@ h2 {
 .credit-links a {
   color: var(--ink);
   text-decoration: none;
-  padding: 0.7rem 0.95rem;
+  padding: 0.72rem 1rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
 }
 
 .credit-links a:hover,
 .credit-links a:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 @keyframes money-drop {
@@ -531,7 +612,7 @@ h2 {
   }
 
   .hero-scene {
-    min-height: 860px;
+    min-height: 900px;
   }
 
   .info-grid {
@@ -546,7 +627,7 @@ h2 {
 
 @media (max-width: 760px) {
   .page-shell {
-    width: min(100% - 1rem, 1240px);
+    width: min(100% - 1rem, 1260px);
     padding-top: 0.5rem;
   }
 
@@ -566,10 +647,11 @@ h2 {
   }
 
   .hero-scene {
-    min-height: 1180px;
+    min-height: 1220px;
   }
 
-  .scene-backdrop {
+  .scene-backdrop,
+  .scene-gridlines {
     inset: 0;
   }
 
@@ -603,18 +685,24 @@ h2 {
     top: 64%;
     bottom: auto;
     height: 18%;
+    left: 0.75rem;
   }
 
   .photo-briefcase {
     top: 84%;
     bottom: auto;
-    height: 15%;
+    height: 14%;
   }
 
-  .scene-badge {
+  .scene-badge,
+  .scene-plaque {
     position: static;
     display: inline-flex;
     margin: 0.75rem 0 0 0.75rem;
+  }
+
+  .scene-plaque {
+    display: block;
   }
 
   .bill {
