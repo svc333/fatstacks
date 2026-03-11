@@ -4,7 +4,9 @@
   --bg-bottom: #06090c;
   --slate-1: #152028;
   --slate-2: #22303a;
-  --gold: #d9b160;`r`n  --signal-red: #ff5a5f;`r`n  --signal-blue: #6ac6ff;
+  --gold: #d9b160;
+  --signal-red: #ff5a5f;
+  --signal-blue: #6ac6ff;
   --gold-bright: #f2d184;
   --gold-deep: #866123;
   --ink: #f2f1ea;
@@ -303,7 +305,8 @@ h2 {
   font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(242, 241, 234, 0.84);`r`n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: rgba(242, 241, 234, 0.84);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .hero-metrics {
@@ -625,7 +628,16 @@ h2 {
   }
 }
 
+@media (max-width: 980px) {
+  .money-feed-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 760px) {
+  .money-feed-grid {
+    grid-template-columns: 1fr;
+  }
   .page-shell {
     width: min(100% - 1rem, 1260px);
     padding-top: 0.5rem;
@@ -723,4 +735,120 @@ h2 {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+.money-feed-panel {
+  position: relative;
+  margin-top: 1.5rem;
+  padding: 2rem;
+  border-radius: 30px;
+  backdrop-filter: blur(16px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    rgba(8, 12, 16, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 22px 90px var(--shadow);
+}
+
+.money-feed-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(140deg, rgba(242, 209, 132, 0.42), transparent 30%, transparent 70%, rgba(242, 209, 132, 0.18));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.money-feed-header {
+  position: relative;
+  z-index: 1;
+  max-width: 48rem;
+}
+
+.money-feed-header p:last-child {
+  margin-bottom: 0;
+}
+
+.money-feed-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.money-card {
+  overflow: hidden;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.26);
+}
+
+.money-card-media {
+  position: relative;
+  aspect-ratio: 1 / 0.9;
+  overflow: hidden;
+}
+
+.money-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.money-card-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 35%, rgba(0, 0, 0, 0.28));
+}
+
+.money-card-body {
+  padding: 1rem;
+}
+
+.money-card-body span {
+  display: block;
+  color: rgba(242, 209, 132, 0.84);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+}
+
+.money-card-body strong {
+  display: block;
+  margin-top: 0.45rem;
+  font-size: 1rem;
+}
+
+.money-card-body p {
+  margin: 0.45rem 0 0;
+  color: rgba(242, 241, 234, 0.78);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.money-feed-status {
+  position: relative;
+  z-index: 1;
+  margin-top: 1rem;
+  padding: 0.95rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  color: rgba(242, 241, 234, 0.78);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+
 
